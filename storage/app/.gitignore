@@ -1,4 +1,6 @@
 *
 !.gitignore
 !.version
+!.app_installed
+!.install_count
 !chat/
