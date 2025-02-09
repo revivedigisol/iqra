@@ -197,18 +197,16 @@ class LoginController extends Controller
             $user = User::query()
                 ->where('school_id', $school->id)
                 ->where('email', $request->email)
-                ->where('username', $request->email)
+                ->orWhere('username', $request->email)
                 ->orWhere('phone_number', $request->email)
                 ->orWhereHas('student', function (Builder $query) use ($request) {
                     $query->where('admission_no', $request->email);
                })
                 ->first();
 
-            if ($user) {
-                if (Hash::check($request->password, $user->password)) {
+            if ($user && Hash::check($request->password, $user->password)) {
                     $this->guard()->login($user);
                     $logged_in = Auth::check();
-                }
             } else {
                 $logged_in = $this->attemptLogin($request);
             }
