@@ -111,7 +111,7 @@
                         <div class="input-control">
                             <label for="#" class="input-control-icon"><i class="fal fa-envelope"></i></label>
                             <input type="text" name="email" class="input-control-input"
-                                placeholder="@lang('auth.enter_email_address')" value="{{ old('email') }}">
+                                placeholder="@lang('auth.enter_email_or_id')" value="{{ old('email') }}">
                         </div>
                         @if ($errors->has('email'))
                             <span class="text-danger text-left mb-15" role="alert">

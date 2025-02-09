@@ -42,6 +42,5 @@ return [
     'resend_code' => 'Resend Code',
     'two_factor_otp' => 'Two Factor OTP',
     'student_registration' => 'Student Registration',
-
-
+    'enter_email_or_id' => 'Enter email address or Admission no.'
 ];
