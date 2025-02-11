@@ -9,6 +9,7 @@ use App\SmHeaderMenuManager;
 use App\SmSocialMediaIcon;
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Spatie\Valuestore\Valuestore;
@@ -33,7 +34,8 @@ class SubdomainMiddleware
         $settings_prefix = Str::lower(str_replace(' ', '_', $school->domain));
         $chat_settings = storage_path('app/chat/' . $settings_prefix . '_settings.json');
         if (!file_exists($chat_settings)) {
-            copy(storage_path('app/chat/default_settings.json'), $chat_settings);
+            // copy(storage_path('app/chat/default_settings.json'), $chat_settings);
+            File::copy(base_path('general_settings.json'), $chat_settings);
         }
 
         app()->scoped('general_settings', function () use ($chat_settings) {

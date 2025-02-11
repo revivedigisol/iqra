@@ -21,6 +21,7 @@ return [
     'enter_email_address'=>'Enter Email Address',
     'enter_name'=>'Enter Name',
     'enter_email'=>'Enter Email',
+    'enter_email_or_admission_no' => 'Enter Email or Admission No',
     'enter_password'=>'Enter Password',
     'enter_new_password'=>'Enter New Password',
     'remember_me'=>'Remember Me',

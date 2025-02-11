@@ -29,6 +29,7 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Jenssegers\Agent\Agent;
 use App\Scopes\StatusAcademicSchoolScope;
+use Illuminate\Database\Eloquent\Builder;
 use Modules\University\Entities\UnAcademicYear;
 
 class LoginController extends Controller
@@ -193,20 +194,19 @@ class LoginController extends Controller
                 return $this->sendLockoutResponse($request);
             }
 
-            $user = User::where('username', $request->email)->where('school_id', $school->id)->first();
+            $user = User::query()
+                ->where('school_id', $school->id)
+                ->where('email', $request->email)
+                ->orWhere('username', $request->email)
+                ->orWhere('phone_number', $request->email)
+                ->orWhereHas('student', function (Builder $query) use ($request) {
+                    $query->where('admission_no', $request->email);
+               })
+                ->first();
 
-            if (!$user) {
-                $user = User::where('phone_number', $request->email)->where('school_id', $school->id)->first();
-            }
-            if (!$user) {
-                $user = User::where('email', $request->email)->where('school_id', $school->id)->first();
-            }
-
-            if ($user) {
-                if (Hash::check($request->password, $user->password)) {
+            if ($user && Hash::check($request->password, $user->password)) {
                     $this->guard()->login($user);
                     $logged_in = Auth::check();
-                }
             } else {
                 $logged_in = $this->attemptLogin($request);
             }
