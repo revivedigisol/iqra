@@ -19,8 +19,8 @@ class SmBaseSetupFactory extends Factory
      *
      * @return array
      */
-    public $names=['Male', 'Female' , 'Others' ,'Islam', 'Hinduism', 'Sikhism', 'Buddhism', 'Protestantism', 'A+','O+','B+','AB+','A-','O-','B-','AB-'];
-    public $ids=[1,1,1,2,2,2,2,2,3,3,3,3,3,3,3,3];
+    public $names=['Male', 'Female' , 'Others' ,'Islam', 'Christianity', 'Others', 'A+','O+','B+','AB+','A-','O-','B-','AB-'];
+    public $ids=[1,1,1,2,2,2,3,3,3,3,3,3,3,3];
     public $i=0;
     public function definition()
     {

@@ -25,7 +25,7 @@ class sm_studentsSeeder extends Seeder
     public function run()
     {
         $faker   = Faker::create();
-        $base_Id = ['Male', 'Female', 'Others', 'Islam', 'Hinduism', 'Sikhism', 'Buddhism', 'Protestantism', 'A+', 'O+', 'B+', 'AB+', 'A-', 'O-', 'B-', 'AB-'];
+        $base_Id = ['Male', 'Female', 'Others', 'Islam', 'Christianity','Others', 'A+', 'O+', 'B+', 'AB+', 'A-', 'O-', 'B-', 'AB-'];
 
         for ($i = 1; $i <= 200; $i++) {
 

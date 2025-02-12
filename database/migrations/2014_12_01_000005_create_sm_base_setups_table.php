@@ -49,8 +49,6 @@ class CreateSmBaseSetupsTable extends Migration
                 'base_setup_name' => 'Others',
                 'created_at' => date('Y-m-d h:i:s'),
             ],
-
-
             [
                 'base_group_id' => 2,
                 'base_setup_name' => 'Islam',
@@ -58,25 +56,14 @@ class CreateSmBaseSetupsTable extends Migration
             ],
             [
                 'base_group_id' => 2,
-                'base_setup_name' => 'Hinduism',
+                'base_setup_name' => 'Christianity',
                 'created_at' => date('Y-m-d h:i:s'),
             ],
             [
                 'base_group_id' => 2,
-                'base_setup_name' => 'Sikhism',
+                'base_setup_name' => 'Others',
                 'created_at' => date('Y-m-d h:i:s'),
             ],
-            [
-                'base_group_id' => 2,
-                'base_setup_name' => 'Buddhism',
-                'created_at' => date('Y-m-d h:i:s'),
-            ],
-            [
-                'base_group_id' => 2,
-                'base_setup_name' => 'Protestantism',
-                'created_at' => date('Y-m-d h:i:s'),
-            ],
-
             [
                 'base_group_id' => 3,
                 'base_setup_name' => 'A+',

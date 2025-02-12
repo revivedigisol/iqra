@@ -10,7 +10,7 @@
     <section class="sms-breadcrumb mb-20 up_breadcrumb">
         <div class="container-fluid">
             <div class="row justify-content-between">
-                <h1>@lang('student.student_admission')</h1>
+                <h1>@lang('student.student_ admission')</h1>
                 <div class="bc-pages">
                     <a href="{{ route('dashboard') }}">@lang('common.dashboard')</a>
                     <a href="#">@lang('student.student_information')</a>
@@ -415,7 +415,7 @@
                                                                 </div>
                                                             </div>
                                                             @if (is_show('first_name'))
-                                                                <div class="col-lg-6 mt-4">
+                                                                <div class="col-lg-4 mt-4">
                                                                     <div class="primary_input ">
                                                                         <label class="primary_input_label"
                                                                             for="">@lang('student.first_name')
@@ -437,8 +437,31 @@
                                                                     </div>
                                                                 </div>
                                                             @endif
+                                                            @if (is_show('middle_name'))
+                                                                <div class="col-lg-4 mt-4">
+                                                                    <div class="primary_input ">
+                                                                        <label class="primary_input_label"
+                                                                            for="">@lang('student.middle_name')
+                                                                            @if (is_required('middle_name') == true)
+                                                                                <span class="text-danger"> *</span>
+                                                                            @endif
+                                                                        </label>
+                                                                        <input
+                                                                            class="primary_input_field form-control{{ $errors->has('middle_name') ? ' is-invalid' : '' }}"
+                                                                            type="text" name="middle_name"
+                                                                            value="{{ old('middle_name') }}">
+
+
+                                                                        @if ($errors->has('middle_name'))
+                                                                            <span class="text-danger">
+                                                                                {{ $errors->first('middle_name') }}
+                                                                            </span>
+                                                                        @endif
+                                                                    </div>
+                                                                </div>
+                                                            @endif
                                                             @if (is_show('last_name'))
-                                                                <div class="col-lg-6 mt-4">
+                                                                <div class="col-lg-4 mt-4">
                                                                     <div class="primary_input ">
                                                                         <label class="primary_input_label"
                                                                             for="">@lang('student.last_name')
@@ -460,6 +483,7 @@
                                                                     </div>
                                                                 </div>
                                                             @endif
+
                                                             @if (is_show('gender'))
                                                                 <div class="col-lg-6 mt-4">
                                                                     <div class="primary_input ">
@@ -657,9 +681,9 @@
                                                                     <div class="primary_input ">
                                                                         <label class="primary_input_label"
                                                                             for="">@lang('student.phone_number')
-                                                                            @if (is_required('phone_number') == true)
+                                                                            <!-- @if (is_required('phone_number') == true)
                                                                                 <span class="text-danger"> *</span>
-                                                                            @endif
+                                                                            @endif -->
                                                                         </label>
                                                                         <input oninput="phoneCheck(this)"
                                                                             class="primary_input_field phone_number form-control{{ $errors->has('phone_number') ? ' is-invalid' : '' }}"

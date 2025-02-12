@@ -87,6 +87,9 @@ class SmStudentAdmissionRequest extends FormRequest
             'first_name' => ['max:100', Rule::requiredIf(function () use ($field) {
                 return in_array('first_name', $field);
             })],
+            'middle_name' => ['max:100', Rule::requiredIf(function () use ($field) {
+                return in_array('middle_name', $field);
+            })],
             'last_name' => [Rule::requiredIf(function () use ($field) {
                 return in_array('last_name', $field);
             }),'max:100'],
@@ -265,11 +268,10 @@ class SmStudentAdmissionRequest extends FormRequest
                 'email_address' => ['bail',Rule::requiredIf(function () use ($field) {
                     return in_array('email_address', $field);
                 }), 'sometimes','nullable','email', Rule::unique('users', 'email')->ignore(optional($student)->user_id)],
-                'phone_number'=>['bail',Rule::requiredIf(function () use ($field) {
-                    return in_array('phone_number', $field);
-                }),Rule::unique('users', 'phone_number')->where(function ($query) use ($student) {
+                'phone_number'=>['bail', 'nullable', Rule::unique('users', 'phone_number')->where(function ($query) use ($student) {
                     return  $query->whereNotNull('phone_number')->where('id', '!=', (optional($student)->user_id));
                 })],
+                
                 'guardians_email' =>['bail', Rule::requiredIf(function () use ($field) {
                     return !$this->parent_id && !$this->staff_parent && in_array('guardians_email', $field);
                 }), 'sometimes', 'nullable'],
