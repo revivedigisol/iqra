@@ -102,7 +102,8 @@
                                             <div class="col-lg-12 text-center">
                                                 @if ($errors->any())
                                                     <div class="error text-danger ">
-                                                        {{ 'Something went wrong, please try again' }}</div>
+                                                        {{ 'Something went wrong, please try again' }}
+                                                    </div>
                                                     @foreach ($errors->all() as $error)
                                                         @if ($error == 'The email address has already been taken.')
                                                             <div class="error text-danger ">
@@ -112,8 +113,6 @@
                                                             {{-- <div class="error text-danger ">{{ $error }}</div> --}}
                                                         @endif
                                                     @endforeach
-                                                @endif
-                                                @if ($errors->any())
                                                 @endif
                                             </div>
                                         </div>

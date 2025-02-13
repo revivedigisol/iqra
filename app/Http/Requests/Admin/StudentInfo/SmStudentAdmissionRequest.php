@@ -265,13 +265,14 @@ class SmStudentAdmissionRequest extends FormRequest
 
         if ($user_role_id !=2 || $user_role_id !=10) {
             $rules +=[
-                'email_address' => ['bail',Rule::requiredIf(function () use ($field) {
+                'email_address' => ['bail', Rule::requiredIf(function () use ($field) {
                     return in_array('email_address', $field);
                 }), 'sometimes','nullable','email', Rule::unique('users', 'email')->ignore(optional($student)->user_id)],
+                
                 'phone_number'=>['bail', 'nullable', Rule::unique('users', 'phone_number')->where(function ($query) use ($student) {
                     return  $query->whereNotNull('phone_number')->where('id', '!=', (optional($student)->user_id));
                 })],
-                
+
                 'guardians_email' =>['bail', Rule::requiredIf(function () use ($field) {
                     return !$this->parent_id && !$this->staff_parent && in_array('guardians_email', $field);
                 }), 'sometimes', 'nullable'],
@@ -284,9 +285,10 @@ class SmStudentAdmissionRequest extends FormRequest
             ];
         }
         
-        if (is_show('custom_field') && isMenuAllowToShow('custom_field')){
-            $rules += $this->generateValidateRules("student_registration");
-        }
+        // TODO: Find a fix for this, causing student admission to fail
+        // if (is_show('custom_field') && isMenuAllowToShow('custom_field')){
+        //     $rules += $this->generateValidateRules("student_registration");
+        // }
 
         if($request->photo != null) {
             $rules += [
@@ -318,7 +320,6 @@ class SmStudentAdmissionRequest extends FormRequest
             ];
         }
 
-        
         //added by abu nayem lead id number check replace of roll number
         return $rules;
     }

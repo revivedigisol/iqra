@@ -214,7 +214,7 @@ class SmStudentAdmissionController extends Controller
 
             $user_stu = new User();
             $user_stu->role_id = 2;
-            $user_stu->full_name = $request->first_name . ' ' . $request->last_name;
+            $user_stu->full_name = "$request->first_name $request->middle_name $request->last_name";
             $user_stu->username = $request->phone_number ?: ($request->email_address ?: $request->admission_number);
             $user_stu->email = $request->email_address;
             $user_stu->phone_number = $request->phone_number;
@@ -302,7 +302,8 @@ class SmStudentAdmissionController extends Controller
 
             $student->first_name = $request->first_name;
             $student->last_name = $request->last_name;
-            $student->full_name = $request->first_name . ' ' . $request->last_name;
+            $student->middle_name = $request->middle_name;
+            $student->full_name = "$request->first_name $request->middle_name $request->last_name";
             $student->gender_id = $request->gender;
             $student->date_of_birth = date('Y-m-d', strtotime($request->date_of_birth));
             $student->caste = $request->caste;
@@ -453,7 +454,7 @@ class SmStudentAdmissionController extends Controller
                 return redirect()->route('lead.index');
             } else {
                 Toastr::success('Operation successful', 'Success');
-                return redirect()->back();
+                return redirect()->route('student_list');
             }
         } catch (\Exception $e) {
             DB::rollback();
