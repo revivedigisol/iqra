@@ -299,7 +299,7 @@
                                                         </div>
                                                         <div class="row">
                                                             @if (is_show('first_name'))
-                                                                <div class="col-lg-6 mt-4">
+                                                                <div class="col-lg-4 mt-4">
                                                                     <div class="primary_input">
                                                                         <label class="primary_input_label"
                                                                             for="">@lang('student.first_name')
@@ -321,8 +321,31 @@
                                                                     </div>
                                                                 </div>
                                                             @endif
+                                                            @if (is_show('middle_name'))
+                                                                <div class="col-lg-4 mt-4">
+                                                                    <div class="primary_input ">
+                                                                        <label class="primary_input_label"
+                                                                            for="">@lang('student.middle_name')
+                                                                            @if (is_required('middle_name') == true)
+                                                                                <span class="text-danger"> *</span>
+                                                                            @endif
+                                                                        </label>
+                                                                        <input
+                                                                            class="primary_input_field form-control{{ $errors->has('middle_name') ? ' is-invalid' : '' }}"
+                                                                            type="text" name="middle_name"
+                                                                            value="{{ $student->middle_name }}">
+
+
+                                                                        @if ($errors->has('middle_name'))
+                                                                            <span class="text-danger">
+                                                                                {{ $errors->first('middle_name') }}
+                                                                            </span>
+                                                                        @endif
+                                                                    </div>
+                                                                </div>
+                                                            @endif
                                                             @if (is_show('last_name'))
-                                                                <div class="col-lg-6 mt-4">
+                                                                <div class="col-lg-4 mt-4">
                                                                     <div class="primary_input">
                                                                         <label class="primary_input_label"
                                                                             for="">@lang('student.last_name')
