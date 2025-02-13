@@ -286,9 +286,9 @@ class SmStudentAdmissionRequest extends FormRequest
         }
         
         // TODO: Find a fix for this, causing student admission to fail
-        // if (is_show('custom_field') && isMenuAllowToShow('custom_field')){
-        //     $rules += $this->generateValidateRules("student_registration");
-        // }
+        if (is_show('custom_field') && isMenuAllowToShow('custom_field')){
+            $rules += $this->generateValidateRules("student_registration");
+        }
 
         if($request->photo != null) {
             $rules += [
