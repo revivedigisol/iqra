@@ -1,4 +1,5 @@
 <div class="white-box">
+
     <!-- Start Student Meta Information -->
 @if (!isset($title))
 <div class="main-title">
@@ -20,8 +21,9 @@
             <div class="name">
                 @lang('student.student_name')
             </div>
+
             <div class="value">
-                {{ @$student_detail->first_name . ' ' . @$student_detail->last_name }}
+                {{ @$student_detail->first_name .' '. @$student_detail->middle_name .' '. @$student_detail->last_name }}
             </div>
         </div>
     </div>
