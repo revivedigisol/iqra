@@ -175,6 +175,7 @@
     "rate" => "Rate",
     "hourly_rate" => "Hourly Rate",
     "add_new_staff" => "Add New Staff",
+    "middle_name" => "Middle Name",
     "first_name" => "First Name",
     "last_name" => "Last Name",
     "married" => "Married",
