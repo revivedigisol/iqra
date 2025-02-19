@@ -28,7 +28,7 @@
             </div>
         </div>
     </section>
-
+    
     <section class="admin-visitor-area up_st_admin_visitor">
         <div class="container-fluid p-0">
             {{ Form::open([
@@ -66,10 +66,7 @@
                                         <a class="nav-link" href="#document_info" role="tab"
                                             data-toggle="tab">@lang('student.document_info')</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#previous_school_info" role="tab"
-                                            data-toggle="tab">@lang('student.previous_school_info')</a>
-                                    </li>
+                                  
                                     <li class="nav-item">
                                         <a class="nav-link" href="#Other_info" role="tab"
                                             data-toggle="tab">@lang('student.Other_info')</a>
@@ -783,6 +780,38 @@
                                                                     </div>
                                                                 </div>
                                                             @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="form-section">
+                                                                <div class="row">
+                                                                    <div class="col-lg-12">
+                                                                        <div class="main-title">
+                                                                            <h4 class="stu-sub-head">@lang('student.previous_school_info')</h4>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row pt-4">
+                                                                    @if (is_show('previous_school_details'))
+                                                                        <div class="col-lg-12">
+                                                                            <div class="primary_input">
+                                                                                <label class="primary_input_label"
+                                                                                    for="">@lang('student.previous_school_details')
+                                                                                    @if (is_required('previous_school_details') == true)
+                                                                                        <span class="text-danger"> *</span>
+                                                                                    @endif
+                                                                                </label>
+                                                                                <textarea class="primary_input_field form-control" cols="0" rows="4" name="previous_school_details">{{ $student->previous_school_details }}</textarea>
+
+
+                                                                            </div>
+                                                                        </div>
+                                                                    @endif
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1834,35 +1863,6 @@
                                                                             @endif
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div role="tabpanel" class="tab-pane fade" id="previous_school_info">
-                                            <div class="row pt-4 row-gap-24">
-                                                <div class="col-lg-12">
-                                                    <div class="row">
-                                                        <div class="col-lg-12">
-                                                            <div class="form-section">
-                                                                <div class="row">
-                                                                    @if (is_show('previous_school_details'))
-                                                                        <div class="col-lg-12">
-                                                                            <div class="primary_input">
-                                                                                <label class="primary_input_label"
-                                                                                    for="">@lang('student.previous_school_details')
-                                                                                    @if (is_required('previous_school_details') == true)
-                                                                                        <span class="text-danger"> *</span>
-                                                                                    @endif
-                                                                                </label>
-                                                                                <textarea class="primary_input_field form-control" cols="0" rows="4" name="previous_school_details">{{ $student->previous_school_details }}</textarea>
-
-
-                                                                            </div>
-                                                                        </div>
-                                                                    @endif
                                                                 </div>
                                                             </div>
                                                         </div>
