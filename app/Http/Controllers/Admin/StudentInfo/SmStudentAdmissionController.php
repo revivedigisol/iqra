@@ -598,8 +598,9 @@ class SmStudentAdmissionController extends Controller
                 $student->roll_no = $request->roll_number;
             }
             $student->first_name = $request->first_name;
+            $student->middle_name = $request->middle_name;
             $student->last_name = $request->last_name;
-            $student->full_name = $request->first_name . ' ' . $request->last_name;
+            $student->full_name = $request->first_name . ' ' . $request->middle_name . ' ' . $request->last_name;
             $student->gender_id = $request->gender;
             $student->date_of_birth = date('Y-m-d', strtotime($request->date_of_birth));
             $student->age = $request->age;
