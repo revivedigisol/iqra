@@ -31,6 +31,7 @@ return [
     'month'=> 'Month',
     'payslip'=> 'Payslip',
     'basic_salary'=> 'Basic Salary',
+    'middle_name'=> 'Middle Name',
     'earnings'=> 'Earnings',
     'deductions'=> 'Deductions',
     'gross_salary'=> 'Gross Salary',

@@ -72,6 +72,7 @@ return [
     'qualifications'=> 'Qualifications',
     'experience'=> 'Experience',
     'payroll_details'=> 'Payroll Details',
+    'middle_name'=> 'Middle Name',
     'payslip_id'=>'Payslip Id',
     'month_year'=>'Month -Year',
     'mode_of_payment'=>'Mode Of Payment',
