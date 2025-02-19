@@ -59,10 +59,6 @@
                                             data-toggle="tab">@lang('student.document_info')</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#previous_school_info" role="tab"
-                                            data-toggle="tab">@lang('student.previous_school_info')</a>
-                                    </li>
-                                    <li class="nav-item">
                                         <a class="nav-link" href="#Other_info" role="tab"
                                             data-toggle="tab">@lang('student.Other_info')</a>
                                     </li>
@@ -974,6 +970,33 @@
                                                                 </div>
                                                             @endif
                                                         </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="form-section">
+                                                    <div class="row">
+                                                        @if (is_show('previous_school_details'))
+                                                            <div class="col-lg-12">
+                                                                <div class="primary_input ">
+                                                                    <label class="primary_input_label"
+                                                                        for="">@lang('student.previous_school_details')
+                                                                        @if (is_required('previous_school_details') == true)
+                                                                            <span class="text-danger"> *</span>
+                                                                        @endif
+                                                                    </label>
+                                                                    <textarea class="primary_input_field form-control{{ $errors->has('previous_school_details') ? ' is-invalid' : '' }}"
+                                                                        cols="0" rows="5" name="previous_school_details">{{ old('previous_school_details') }}</textarea>
+
+
+                                                                    @if ($errors->has('previous_school_details'))
+                                                                        <span class="text-danger">
+                                                                            {{ $errors->first('previous_school_details') }}
+                                                                        </span>
+                                                                    @endif
+                                                                </div>
+                                                            </div>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
@@ -2029,37 +2052,6 @@
                                                                 </div>
                                                             </div>
 
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div role="tabpanel" class="tab-pane fade" id="previous_school_info">
-                                            <div class="row pt-4 row-gap-24">
-                                                <div class="col-lg-12">
-                                                    <div class="form-section">
-                                                        <div class="row">
-                                                            @if (is_show('previous_school_details'))
-                                                                <div class="col-lg-12">
-                                                                    <div class="primary_input ">
-                                                                        <label class="primary_input_label"
-                                                                            for="">@lang('student.previous_school_details')
-                                                                            @if (is_required('previous_school_details') == true)
-                                                                                <span class="text-danger"> *</span>
-                                                                            @endif
-                                                                        </label>
-                                                                        <textarea class="primary_input_field form-control{{ $errors->has('previous_school_details') ? ' is-invalid' : '' }}"
-                                                                            cols="0" rows="5" name="previous_school_details">{{ old('previous_school_details') }}</textarea>
-
-
-                                                                        @if ($errors->has('previous_school_details'))
-                                                                            <span class="text-danger">
-                                                                                {{ $errors->first('previous_school_details') }}
-                                                                            </span>
-                                                                        @endif
-                                                                    </div>
-                                                                </div>
-                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>
