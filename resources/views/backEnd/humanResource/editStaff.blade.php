@@ -261,6 +261,26 @@
                                                                     </div>
                                                                 </div>
                                                             @endif
+                                                            @if (in_array('middle_name', $has_permission))
+                                                            <div class="col-lg-6 col-xl-3 mb-20">
+                                                                <div class="primary_input">
+                                                                    <label class="primary_input_label"
+                                                                        for="">@lang('hr.middle_name')
+                                                                        {{ in_array('middle_name', $is_required) ? '*' : '' }}</label>
+                                                                    <input
+                                                                        class="primary_input_field form-control{{ $errors->has('middle_name') ? ' is-invalid' : '' }}"
+                                                                        type="text" name="middle_name"
+                                                                        value="@if (isset($editData)) {{ $editData->middle_name }} @endif">
+
+
+                                                                    @if ($errors->has('middle_name'))
+                                                                        <span class="text-danger">
+                                                                            {{ $errors->first('middle_name') }}
+                                                                        </span>
+                                                                    @endif
+                                                                </div>
+                                                            </div>
+                                                            @endif
                                                             @if (in_array('last_name', $has_permission))
                                                                 <div class="col-lg-6 col-xl-3 mb-20">
                                                                     <div class="primary_input">

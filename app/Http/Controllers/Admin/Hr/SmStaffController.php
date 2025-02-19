@@ -529,8 +529,11 @@ class SmStaffController extends Controller
             if ($request->filled('last_name')) {
                 $staff->last_name = $request->last_name;
             }
-            if ($request->filled('first_name') || $request->filled('last_name')) {
-                $staff->full_name = $request->first_name . ' ' . $request->last_name;
+            if ($request->filled('middle_name')) {
+                $staff->middle_name = $request->middle_name;
+            }
+            if ($request->filled('first_name') || $request->filled('last_name') || $request->filled('middle_name')) {
+                $staff->full_name = $request->first_name . ' ' . $request->middle_name . ' ' . $request->last_name;
             }
             if ($request->filled('fathers_name')) {
                 $staff->fathers_name = $request->fathers_name;

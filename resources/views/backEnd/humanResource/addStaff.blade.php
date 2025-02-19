@@ -248,7 +248,7 @@
 
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-lg-4 col-xl-2 mb-20">
+                                                        <div class="col-lg-6 col-xl-3 mb-20">
                                                             <div class="primary_input">
                                                                 <label class="primary_input_label"
                                                                     for="">@lang('hr.first_name')
@@ -267,7 +267,7 @@
                                                                 @endif
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-4 col-xl-2 mb-20">
+                                                        <div class="col-lg-6 col-xl-3 mb-20">
                                                             <div class="primary_input">
                                                                 <label class="primary_input_label"
                                                                     for="">@lang('hr.middle_name')
@@ -286,7 +286,7 @@
                                                                 @endif
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-4 col-xl-2 mb-20">
+                                                        <div class="col-lg-6 col-xl-3 mb-20">
                                                             <div class="primary_input">
                                                                 <label class="primary_input_label"
                                                                     for="">@lang('hr.last_name')
