@@ -216,7 +216,7 @@ class SmStaffController extends Controller
                 $user->role_id = $request->role_id;
                 $user->username = $request->mobile ? $request->mobile : $request->email;
                 $user->email = $request->email;
-                $user->full_name = $request->first_name . ' ' . $request->last_name;
+                $user->full_name = $request->first_name . ' ' . $request->middle_name . ' ' . $request->last_name;
                 $user->password = Hash::make(123456);
                 $user->school_id = Auth::user()->school_id;
                 $user->save();
@@ -244,8 +244,9 @@ class SmStaffController extends Controller
                 }
 
                 $staff->first_name = $request->first_name;
+                $staff->middle_name = $request->middle_name;
                 $staff->last_name = $request->last_name;
-                $staff->full_name = $request->first_name . ' ' . $request->last_name;
+                $staff->full_name = $request->first_name . ' ' . $request->middle_name . ' ' . $request->last_name;
                 $staff->fathers_name = $request->fathers_name;
                 $staff->mothers_name = $request->mothers_name;
                 $staff->email = $request->email;
