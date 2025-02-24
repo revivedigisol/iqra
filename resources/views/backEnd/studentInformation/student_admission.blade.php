@@ -398,6 +398,44 @@
                                                                     </div>
                                                                 </div>
                                                             @endif
+                                                            @if (is_show('student_category_id'))
+                                                                <div class="col-lg-6 mt-4">
+                                                                    <div class="primary_input ">
+                                                                        <div class="primary_input ">
+                                                                            <label class="primary_input_label"
+                                                                                for="">@lang('student.category')
+                                                                                @if (is_required('student_category_id') == true)
+                                                                                    <span class="text-danger"> *</span>
+                                                                                @endif
+                                                                            </label>
+                                                                            <select
+                                                                                class="primary_select form-control{{ $errors->has('student_category_id') ? ' is-invalid' : '' }}"
+                                                                                name="student_category_id">
+                                                                                <option
+                                                                                    data-display="@lang('student.category')  @if (is_required('student_category_id') == true) * @endif"
+                                                                                    value="">@lang('student.student_category_id')
+                                                                                    @if (is_required('category') == true)
+                                                                                        <span class="text-danger"> *</span>
+                                                                                    @endif
+                                                                                </option>
+                                                                                @foreach ($categories as $category)
+                                                                                    <option value="{{ $category->id }}"
+                                                                                        {{ old('student_category_id') == $category->id ? 'selected' : '' }}>
+                                                                                        {{ $category->category_name }}
+                                                                                    </option>
+                                                                                @endforeach
+
+                                                                            </select>
+
+                                                                            @if ($errors->has('student_category_id'))
+                                                                                <span class="text-danger">
+                                                                                    {{ $errors->first('student_category_id') }}
+                                                                                </span>
+                                                                            @endif
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>
@@ -850,44 +888,7 @@
                                                                     </div>
                                                                 </div>
                                                             @endif
-                                                            @if (is_show('student_category_id'))
-                                                                <div class="col-lg-6 mt-4">
-                                                                    <div class="primary_input ">
-                                                                        <div class="primary_input ">
-                                                                            <label class="primary_input_label"
-                                                                                for="">@lang('student.category')
-                                                                                @if (is_required('student_category_id') == true)
-                                                                                    <span class="text-danger"> *</span>
-                                                                                @endif
-                                                                            </label>
-                                                                            <select
-                                                                                class="primary_select form-control{{ $errors->has('student_category_id') ? ' is-invalid' : '' }}"
-                                                                                name="student_category_id">
-                                                                                <option
-                                                                                    data-display="@lang('student.category')  @if (is_required('student_category_id') == true) * @endif"
-                                                                                    value="">@lang('student.student_category_id')
-                                                                                    @if (is_required('category') == true)
-                                                                                        <span class="text-danger"> *</span>
-                                                                                    @endif
-                                                                                </option>
-                                                                                @foreach ($categories as $category)
-                                                                                    <option value="{{ $category->id }}"
-                                                                                        {{ old('student_category_id') == $category->id ? 'selected' : '' }}>
-                                                                                        {{ $category->category_name }}
-                                                                                    </option>
-                                                                                @endforeach
-
-                                                                            </select>
-
-                                                                            @if ($errors->has('student_category_id'))
-                                                                                <span class="text-danger">
-                                                                                    {{ $errors->first('student_category_id') }}
-                                                                                </span>
-                                                                            @endif
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            @endif
+                                                            
                                                             @if (is_show('height'))
                                                                 <div class="col-lg-6 mt-4">
                                                                     <div class="primary_input ">
@@ -2280,16 +2281,18 @@
                                                         <div class="row">
                                                             @if (count($custom_fields) && is_show('custom_field') && isMenuAllowToShow('custom_field'))
                                                                 {{-- Custom Filed Start --}}
-                                                                <div class="row mt-40">
+                                                                <div class="row mt-8">
                                                                     <div class="col-lg-12">
                                                                         <div class="main-title">
                                                                             <h4 class="stu-sub-head">@lang('student.custom_field')
                                                                             </h4>
                                                                         </div>
                                                                     </div>
+                                                                    {{-- Custom Filed End --}}
+                                                                    <div class="col-lg-12">
+                                                                        @include('backEnd.studentInformation._custom_field')
+                                                                    </div>
                                                                 </div>
-                                                                @include('backEnd.studentInformation._custom_field')
-                                                                {{-- Custom Filed End --}}
                                                             @endif
                                                         </div>
                                                     </div>
