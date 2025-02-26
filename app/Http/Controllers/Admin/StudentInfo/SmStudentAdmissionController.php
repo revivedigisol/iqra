@@ -1454,7 +1454,9 @@ class SmStudentAdmissionController extends Controller
                         try {
 
                             if ($value->admission_number == null) {
-                                continue;
+                                //  throw error
+                                Toastr::error('Admission number is required', 'Failed');
+                                return redirect()->back();
                             } else {
                             }
 
