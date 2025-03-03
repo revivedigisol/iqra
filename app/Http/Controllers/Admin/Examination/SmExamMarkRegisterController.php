@@ -172,12 +172,12 @@ class SmExamMarkRegisterController extends Controller
                 }
                 // return view('backEnd.examination.masks_register_create', compact('students', 'exam_id', 'subject_id', 'marks_register_subjects', 'assign_subject_ids','un_session','un_faculty','un_department','un_academic','un_semester','un_semester_label','subjectName','exam_type','exam_type_id'))->with($data);
             } else {
-                $exam = SmExam::query();
-                $exam->where('id', $request->exam)
+                $examQuery = SmExam::query();
+                $examQuery->where('exam_type_id', $request->exam)
                 ->where('subject_id', $request->subject)
                 ->where('class_id', $request->class);
                 if ($request->section=='') {
-                    $exam = $exam->first();
+                    $exam = $examQuery->first();
                     $classSections=SmAssignSubject::where('class_id', $request->class)
                                                 ->where('subject_id', $request->subject)
                                                 ->where('school_id', auth()->user()->school_id)
@@ -189,7 +189,7 @@ class SmExamMarkRegisterController extends Controller
                                                         ->where('subject_id', $request->subject)
                                                         ->first();
                 } else {
-                    $exam = $exam->where('section_id', $request->section)->first();
+                    $exam = $examQuery->where('section_id', $request->section)->first();
                     $exam_attendance = SmExamAttendance::where('class_id', $request->class)->where('section_id', $request->section)->where('exam_id', $exam->id)->where('subject_id', $request->subject)->first();
                 }
 
