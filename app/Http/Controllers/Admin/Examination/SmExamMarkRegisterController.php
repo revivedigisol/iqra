@@ -34,6 +34,7 @@ use Modules\University\Entities\UnAcademicYear;
 use Modules\University\Entities\UnSemesterLabel;
 use App\Http\Requests\Admin\Examination\AddMarkRequest;
 use Modules\University\Entities\UnSubjectAssignStudent;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Admin\StudentInfo\SmStudentReportController;
 use Modules\University\Repositories\Interfaces\UnCommonRepositoryInterface;
 
@@ -449,7 +450,8 @@ class SmExamMarkRegisterController extends Controller
                     $section_id = $request->section_id;
                 }
                 $subject_id = $request->subject_id;
-                $exam_id = SmExam::find($request->exam_id)->exam_type_id;
+
+                $exam_type_id = $request->exam_id;//SmExam::find($request->exam_id)->exam_type_id;
                 $counter = 0;           // Initilize by 0
         
                 foreach ($request->markStore as $record_id => $record) {
@@ -476,7 +478,7 @@ class SmExamMarkRegisterController extends Controller
                                     ['class_id', $class_id],
                                     ['section_id', $section_id],
                                     ['subject_id', $subject_id],
-                                    ['exam_term_id', $exam_id],
+                                    ['exam_term_id', $exam_type_id],
                                     ['student_record_id', $record_id],
                                     ['exam_setup_id', $exam_setup_id],
                                     ['student_id', $sid]
@@ -486,7 +488,7 @@ class SmExamMarkRegisterController extends Controller
                             if ($previous_record == "" || $previous_record == null) {
         
                                 $marks_register = new SmMarkStore();
-                                $marks_register->exam_term_id           =       $exam_id;
+                                $marks_register->exam_term_id           =       $exam_type_id;
                                 $marks_register->class_id               =       $class_id;
                                 $marks_register->section_id             =       $section_id;
                                 $marks_register->subject_id             =       $subject_id;
@@ -553,7 +555,7 @@ class SmExamMarkRegisterController extends Controller
                                 ['class_id', $class_id],
                                 ['section_id', $section_id],
                                 ['subject_id', $subject_id],
-                                ['exam_type_id', $exam_id],
+                                ['exam_type_id', $exam_type_id],
                                 ['student_record_id', $record_id],
                                 ['student_id', $sid]
                             ])->first();
@@ -564,7 +566,7 @@ class SmExamMarkRegisterController extends Controller
                                 $result_record->class_id               =   $class_id;
                                 $result_record->section_id             =   $section_id;
                                 $result_record->subject_id             =   $subject_id;
-                                $result_record->exam_type_id           =   $exam_id;
+                                $result_record->exam_type_id           =   $exam_type_id;
                                 $result_record->student_id             =   $sid;
                                 $result_record->student_record_id      =   $record_id;
         
@@ -615,6 +617,7 @@ class SmExamMarkRegisterController extends Controller
                 return redirect('marks-register-create');
         } catch (\Exception $e) {
                 DB::rollback();
+                Log::info($e->getMessage());
                 Toastr::error('Operation Failed', 'Failed');
                 return redirect()->back();
         }
